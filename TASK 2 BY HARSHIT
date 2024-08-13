@@ -1,0 +1,73 @@
+import random
+
+def comp_choice():
+    c_ch=random.randint(1,3)
+    #print("choice=",c_ch)
+    return c_ch
+def compare(p1,p2):#1,1 2,2 3,3 1,2 1,3 2,3
+    #1=r 2=p 3=s
+    if p1==1 and p2==2:
+        #r vs p
+        return 2
+    elif p1==1 and p2==3:
+		#r vs s
+         return 1
+    elif p1==3 and p2==1:
+		#s vs r
+        return 2
+    elif(p1==2 and p2==3):
+		#p vs s
+        return 2
+    elif(p1==3 and p2==2):
+        #s vs p
+        return 1
+    elif p1==2 and p2==1:
+        #p vs r
+        return 1
+    else:
+        return 0
+str1="player2[computer]"
+str2=input("Enter your name : ")
+s1,s2=0,0
+print("ROCK PAPER AND SCISSORS\n")
+x=int(input("How many time you want to play the game?--->"))
+print("*DISCLAIMER:GAME IS NOT RIGGED, COMPUTER CHOSES A NUMBER BEFORE, WHICH IS THEN DECLARED TO ROCK, PAPER OR SCISSOR AND USER DOES NOT KNOW ABOUT THE NUMBER, IT IS THEN COMPARED*\n")
+for i in range (1,x+1):
+    print("Enter your choice:\n 1-rock\n 2-paper\n 3-scissors\n")
+    ch=int(input("----->"))
+    if ch==1:
+        print("You chose \"Rock\" ")
+    elif ch==2:
+        print("You chose \"Paper\" ")
+    elif ch==3:
+        print("You chose \"Scissors\" ")
+    c_ch=comp_choice()
+    if c_ch==1:
+        print("Computer chose \"Rock\" ")
+    elif c_ch==2:
+        print("Computer chose \"Paper\" ")
+    elif c_ch==3:
+        print("Computer chose \"Scissors\" ")
+    # Now comparing values of player and computer
+    ans=compare(ch,c_ch)
+    #print("comparision=",ans)
+    if ans==1:
+        print("\'",str2,"\'won this round")
+        s1+=1
+        print(str2,"\t",str1)
+        print(s1,"\t\t\t",s2)
+    elif ans==2:
+        print("\'Player2[Computer]\' Won this round")
+        s2+=1
+        print(str2,"\t",str1)
+        print(s1,"\t\t\t",s2)
+    else :
+        print("It is a tie")
+        print(str2,"\t",str1)
+        print(s1,"\t\t\t",s2)
+if s1>s2:
+    print(str2,"is the WINNER !")
+elif s2>s1:
+    print(str1,"is the WINNER !")
+else:
+    print("It is a Tie !")
